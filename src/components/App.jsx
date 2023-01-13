@@ -1,10 +1,16 @@
-import Film from "./Film/film"
+import { Routes, Route } from 'react-router-dom';
+// import Film from "./MovieDetails/MovieDetails"
+import Layout from "./Layout/Layout";
+
 
 export const App = () => {
   return (
-    <div >
-      Work starts today
-      <Film/>
-    </div>
+    < >
+      <Routes>
+        <Route path="/" element={<Layout/>}></Route>
+      </Routes>
+      {/* <Layout/>  
+      <Film/> */}
+    </>
   );
 };

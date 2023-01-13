@@ -1,0 +1,9 @@
+.Layuot{
+    display: flex;
+    flex-direction: column;
+   font-size: 24px;
+}
+.Layuot__element{
+    width: 120px;
+    margin-left: 20px;
+}
