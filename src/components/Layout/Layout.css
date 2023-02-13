@@ -1,9 +1,13 @@
 .Layuot{
-    display: flex;
-    flex-direction: column;
-   font-size: 24px;
+   
+    height: 60px; 
+    font-size: 24px;
+    background-color: gray;
+    border: 1px solid red;
 }
 .Layuot__element{
+    display: inline-block;
     width: 120px;
+    margin-top: 0;
     margin-left: 20px;
 }

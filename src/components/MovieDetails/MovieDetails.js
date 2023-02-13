@@ -1,7 +1,7 @@
 import React from "react";
 import "./MovieDetails.css"
-import Cast from "components/Cast/Cast";
-import Reviews from "../Reviews/Reviews"
+// import Cast from "components/Cast/Cast";
+// import Reviews from "../Reviews/Reviews"
 
 
 
