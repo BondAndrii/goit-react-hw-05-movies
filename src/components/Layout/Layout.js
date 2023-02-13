@@ -6,7 +6,7 @@ import "./Layout.css"
  const Layout = () => {
     return (
         <div className="Layuot"> 
-            <h2 className="Layuot__element">Home</h2>
+            <Link to="/home" className="Layuot__element">Home</Link>
             <Link to="/movies" className="Layuot__element">Movies</Link>
             <Outlet/>
         </div>
