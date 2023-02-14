@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, Outlet } from "react-router-dom"
 import "./MovieDetails.css"
 // import Cast from "components/Cast/Cast";
 // import Reviews from "../Reviews/Reviews"
@@ -23,10 +24,9 @@ const MovieDetails = () => {
             </div>
             
             <h2>Additional information</h2>           
-            <div>
-                <Cast />
-                <Reviews/>
-            </div>
+            <Link to="cast">Cast</Link>
+            <Link to="reviews">Reviews</Link>
+            <Outlet/>
         </div>
     )
 }
