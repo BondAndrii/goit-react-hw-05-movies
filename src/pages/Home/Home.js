@@ -2,7 +2,7 @@ import React from "react";
 
 const Home = () => {
     return (
-        <h2> А це домашня сторінка</h2>
+        <h2> Це домашня сторінка</h2>
     )
 }
 
