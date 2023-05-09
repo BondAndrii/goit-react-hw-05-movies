@@ -10,6 +10,7 @@ import Reviews from 'components/Reviews/Reviews';
 export const App = () => {
   return (
     < >
+      <h1>Commit</h1>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />}></Route>
