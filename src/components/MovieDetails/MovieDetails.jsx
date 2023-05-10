@@ -25,7 +25,7 @@ export const MovieDetails = () => {
 
     return (
         <div >
-            <p className="goBack">Go back</p>
+            <p className="goBack">Go back go</p>
             <div className="StandartInform">
                 <img
                     src={details.poster_path}
