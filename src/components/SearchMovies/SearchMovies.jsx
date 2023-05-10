@@ -10,7 +10,7 @@ export const SearchMovies = () => {
     //----------------------------request-----------------------------------------//
     async function fetcData() {
       await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=278bf75944205bdb0a6474cdc0be106c&query=${searchMovie}&language=en-US&page=1&per_page=12&include_adult=false`)
-          .then(responce => { setSearchList(responce.data.results); console.log(responce.data)}).catch(error => console.log(error))
+          .then(responce =>  setSearchList(responce.data.results)).catch(error => console.log(error))
     }
     //----------------------------request-----------------------------------------//
     //----------------------------home-----------------------------------------//
@@ -26,13 +26,13 @@ export const SearchMovies = () => {
     const handleChange = (event) => {
         const { value } = event.target;
         setSearchMovie(value);
-        console.log("in change", value);
+        // console.log("in change", value);
     }
     const handleSubmit = (event) => {
         const { value } = event.target;
         event.preventDefault();
         setSearchMovie(value)
-        console.log("in submit", searchMovie);
+        // console.log("in submit", searchMovie);
         reset()
     }
     const reset = () => {
