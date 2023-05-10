@@ -3,14 +3,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export const SearchMovies = () => {
-    // const [inputValue, setInputValue] = useState('');
+    const [searchList, setSearchList] = useState([]);
     const [searchMovie, setSearchMovie] = useState('');
 
     useEffect(() => {
     //----------------------------request-----------------------------------------//
     async function fetcData() {
       await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=278bf75944205bdb0a6474cdc0be106c&query=${searchMovie}&language=en-US&page=1&per_page=12&include_adult=false`)
-      .then(responce => console.log(responce)).catch(error => console.log(error))
+          .then(responce => { setSearchList(responce.data.results); console.log(responce.data)}).catch(error => console.log(error))
     }
     //----------------------------request-----------------------------------------//
     //----------------------------home-----------------------------------------//
@@ -40,6 +40,7 @@ export const SearchMovies = () => {
     }
 
     return (
+        <>
         <form onSubmit={handleSubmit}>
             <label> 
                 <input
@@ -50,6 +51,12 @@ export const SearchMovies = () => {
                 <button type="submit">Submit</button>
             </label>
         </form>
+        <ul>
+                {searchList.map(searchItem => <li key={searchItem.id}>{searchItem.title || searchItem.name} </li>
+            )}    
+        </ul>
+        </>
+        
     )
 }
 
