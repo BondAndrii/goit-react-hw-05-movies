@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 // import { Link, Outlet } from "react-router-dom"
 import "./MovieDetails.css"
-import axios from "axios";
+
+import { api } from 'services/api';
+
 // import Cast from "components/Cast/Cast";
 // import Reviews from "../Reviews/Reviews"
 
@@ -11,17 +13,9 @@ export const MovieDetails = () => {
     const [details, setDetails] = useState({})
 
     useEffect(() => {
-    const key = '278bf75944205bdb0a6474cdc0be106c';
-    async function fetchData() {
-        await axios.get(`https://api.themoviedb.org/3/movie/2929
-        ?api_key=${key}&language=en-US`)
-          .then(responce => {
-              setDetails(responce.data);
-            //   console.log("in details",responce.data.poster_path)
-          }).catch(error => console.log(error))
-    }    
-    fetchData()
-  }
+   
+        api.fetchDetails().then(responce => { setDetails(responce) }).catch(error => console.log(error))
+    }
   , []);
 
     return (

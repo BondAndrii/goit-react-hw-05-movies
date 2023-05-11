@@ -1,34 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import axios from "axios";
-
-export const SearchMovies = () => {
-    const [searchList, setSearchList] = useState([]);
+export const SearchMovies = ({onSubmit}) => {
+    
     const [searchMovie, setSearchMovie] = useState('');
-
-    useEffect(() => {    
-        const key = '278bf75944205bdb0a6474cdc0be106c';
-    async function fetcData() {
-      await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${searchMovie}&language=en-US&page=1&per_page=12&include_adult=false`)
-          .then(responce => { setSearchList(responce.data.results); console.log(responce.data.results[0]) }).catch(error => console.log(error))
-    }  
-        if (searchMovie === '') {
-        return
-        } else {
-          fetcData()  
-    }    
-  }, [searchMovie]);
 
     const handleChange = (event) => {
         const { value } = event.target;
         setSearchMovie(value);
-        // console.log("in change", value);
+        
     }
-    const handleSubmit = (event) => {
-        const { value } = event.target;
+    const handleSubmit = (event) => {        
         event.preventDefault();
-        setSearchMovie(value)
-        // console.log("in submit", searchMovie);
+        onSubmit(searchMovie)        
         reset()
     }
     const reset = () => {
@@ -36,7 +19,7 @@ export const SearchMovies = () => {
     }
 
     return (
-        <>
+    
         <form onSubmit={handleSubmit}>
             <label> 
                 <input
@@ -46,13 +29,7 @@ export const SearchMovies = () => {
                 ></input>
                 <button type="submit">Submit</button>
             </label>
-        </form>
-        <ul>
-                {searchList.map(searchItem => <li key={searchItem.id}>{searchItem.title || searchItem.name} </li>
-            )}    
-        </ul>
-        </>
-        
+        </form>     
     )
 }
 
