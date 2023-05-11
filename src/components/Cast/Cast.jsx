@@ -4,7 +4,7 @@ import axios from "axios";
 import { CastItem } from "components/CastItem/CastItem";
 import "./Cast.css"
 
-export const Cast = ({}) => {
+export const Cast = () => {
     const [cast, setCast] = useState([]);
     useEffect(() => { 
         
