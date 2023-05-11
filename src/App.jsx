@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { SearchMovies } from 'components/SearchMovies/SearchMovies';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
+import { Cast } from 'components/Cast/Cast';
 // import { Routes, Route } from 'react-router-dom';
 // // import Film from "./MovieDetails/MovieDetails"
 // import Layout from "./components/Layout/Layout";
@@ -39,7 +40,8 @@ export const App = () => {
         {top.map(topItem => <li key={topItem.id}>{topItem.title || topItem.name} </li>)}
       </ul>
       <SearchMovies />
-      <MovieDetails/>
+      <MovieDetails />
+      <Cast/>
     </>
   )
   

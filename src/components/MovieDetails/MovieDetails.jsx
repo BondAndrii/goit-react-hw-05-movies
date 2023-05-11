@@ -13,10 +13,11 @@ export const MovieDetails = () => {
     useEffect(() => {
     const key = '278bf75944205bdb0a6474cdc0be106c';
     async function fetchData() {
-      await axios.get(`https://api.themoviedb.org/3/movie/2927?api_key=${key}&language=en-US`)
+        await axios.get(`https://api.themoviedb.org/3/movie/2929
+        ?api_key=${key}&language=en-US`)
           .then(responce => {
               setDetails(responce.data);
-              console.log("in details",responce.data)
+              console.log("in details",responce.data.poster_path)
           }).catch(error => console.log(error))
     }    
     fetchData()
@@ -28,7 +29,8 @@ export const MovieDetails = () => {
             <p className="goBack">Go back go</p>
             <div className="StandartInform">
                 <img
-                    src={details.poster_path}
+                    src={`https://image.tmdb.org./t/p/w300${details.poster_path}`}
+                    // src={details.poster_path}
                     className="Banner"
                     alt={details.tagline} />
                 <div className="Inform">
@@ -38,7 +40,7 @@ export const MovieDetails = () => {
                     <p>{ details.overview}</p>
                     <h2>Genres</h2>
                     <p>
-                        {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)}
+                        {/* {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)} */}
                     </p>
                 </div>
                 
