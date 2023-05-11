@@ -17,7 +17,7 @@ export const MovieDetails = () => {
         ?api_key=${key}&language=en-US`)
           .then(responce => {
               setDetails(responce.data);
-              console.log("in details",responce.data.poster_path)
+            //   console.log("in details",responce.data.poster_path)
           }).catch(error => console.log(error))
     }    
     fetchData()
@@ -40,7 +40,7 @@ export const MovieDetails = () => {
                     <p>{ details.overview}</p>
                     <h2>Genres</h2>
                     <p>
-                       видалив
+                        {/* {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)} */}
                     </p>
                 </div>
                 

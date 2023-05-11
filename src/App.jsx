@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { SearchMovies } from 'components/SearchMovies/SearchMovies';
 import { MovieDetails } from 'components/MovieDetails/MovieDetails';
 import { Cast } from 'components/Cast/Cast';
+import { Reviews } from 'components/Reviews/Reviews';
 // import { Routes, Route } from 'react-router-dom';
 // // import Film from "./MovieDetails/MovieDetails"
 // import Layout from "./components/Layout/Layout";
@@ -41,7 +42,8 @@ export const App = () => {
       </ul>
       <SearchMovies />
       <MovieDetails />
-      <Cast/>
+      <Cast />
+      <Reviews/>
     </>
   )
   
