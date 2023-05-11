@@ -40,7 +40,7 @@ export const MovieDetails = () => {
                     <p>{ details.overview}</p>
                     <h2>Genres</h2>
                     <p>
-                        {/* {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)} */}
+                       видалив
                     </p>
                 </div>
                 
