@@ -4,19 +4,20 @@ import "./MovieDetails.css"
 
 import { api } from 'services/api';
 
-// import Cast from "components/Cast/Cast";
-// import Reviews from "../Reviews/Reviews"
+import { Cast } from "components/Cast/Cast";
+
+import { Reviews } from "components/Reviews/Reviews";
 
 
 
-export const MovieDetails = () => {
+export const MovieDetails = ({forDetailsId}) => {
     const [details, setDetails] = useState({})
-
+    console.log("in Details", forDetailsId)
     useEffect(() => {
-   
-        api.fetchDetails().then(responce => { setDetails(responce) }).catch(error => console.log(error))
+        
+        api.fetchDetails(forDetailsId).then(responce => { setDetails(responce) }).catch(error => console.log(error))
     }
-  , []);
+  , [forDetailsId]);
 
     return (
         <div >
@@ -37,13 +38,11 @@ export const MovieDetails = () => {
                         {/* {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)} */}
                     </p>
                 </div>
-                
-            </div>
-            
-            <h2>Additional information</h2>           
-            {/* <Link to="cast">Cast</Link>
-            <Link to="reviews">Reviews</Link>
-            <Outlet/> */}
+                <Cast castId={forDetailsId} />
+                <Reviews forReviewsId={forDetailsId} />
+            </div>           
+                    
+           
         </div>
     )
 }

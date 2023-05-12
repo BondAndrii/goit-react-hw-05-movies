@@ -6,6 +6,7 @@ async function fetchTop() {
     let list = [];
     await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`)
         .then(responce => { 
+            // console.log("in fetchTop", responce.data.results)
             if (responce.data.results.length > 0) {
                 list = responce.data.results;
                 return
@@ -32,9 +33,9 @@ async function fetchMovie(filmName) {
     return list;
 }
 
-async function fetchDetails() {
+async function fetchDetails(id) {
     let obj = {};
-    await axios.get(`https://api.themoviedb.org/3/movie/2929?api_key=${key}&language=en-US`)
+    await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`)
         .then(responce => {
             if (responce.data) {
                 obj = responce.data;
@@ -45,9 +46,9 @@ async function fetchDetails() {
     return obj;
 } 
 
-async function fetchReview() {
+async function fetchReviews(id) {
     let list = [];
-    await axios.get(`https://api.themoviedb.org/3/movie/2929/reviews?api_key=${key}&language=en-US&page=1`)
+    await axios.get(`https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${key}&language=en-US&page=1`)
         .then(responce => {
             if (responce.data.results.length > 0) {
                 list = responce.data.results;
@@ -58,9 +59,9 @@ async function fetchReview() {
     return list;
 }
 
-async function fetchCast() {
+async function fetchCast(id) {
     let list = [];
-    await axios.get(`https://api.themoviedb.org/3/movie/2927/credits?api_key=${key}&language=en-US`)
+    await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}&language=en-US`)
         .then(responce => {
             if (responce.data.cast.length > 0) {
                 list = responce.data.cast;
@@ -76,5 +77,5 @@ export const api = {
     fetchMovie,
     fetchDetails,
     fetchCast,
-    fetchReview,
+    fetchReviews,
 }

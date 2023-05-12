@@ -6,11 +6,12 @@ import { api } from 'services/api';
 
 import "./Cast.css"
 
-export const Cast = () => {
+export const Cast = ({castId}) => {
     const [cast, setCast] = useState([]);
+    console.log("castId", castId)
     useEffect(() => {    
-        api.fetchCast().then(cast => {setCast(cast)}).catch(error => console.log(error));  
-  }, []);
+        api.fetchCast(castId).then(cast => {setCast(cast)}).catch(error => console.log(error));  
+  }, [castId]);
 
     return (
         <div className="Cast">
