@@ -6,18 +6,14 @@ import { SearchMovies } from "components/SearchMovies/SearchMovies";
 
 import { MovieDetails } from "components/MovieDetails/MovieDetails";
 
-import { Cast } from "components/Cast/Cast";
-
-import { Reviews } from "components/Reviews/Reviews";
-
 import { Maper } from "components/Maper/Maper";
 
 import { api } from 'services/api';
 
-export const Movies = () => {
+export const Movies = ({importentId, getId}) => {
     const [searchMovie, setSearchMovie] = useState('');
     const [searchList, setSearchList] = useState([]);
-    
+    console.log("in Mov", importentId)
 
         useEffect(() => { 
            if (searchMovie === '') {
@@ -37,10 +33,8 @@ export const Movies = () => {
         <div>
             
             <SearchMovies onSubmit={findSearchMovie} />
-            <Maper data={searchList} />            
-            <MovieDetails />
-            <Cast />
-            <Reviews/>
+            <Maper data={searchList} onClick={getId} />            
+            <MovieDetails forDetailsId={importentId} />          
         </div>
     )
 }
