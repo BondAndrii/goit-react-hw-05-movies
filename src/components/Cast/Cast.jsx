@@ -8,7 +8,7 @@ import "./Cast.css"
 
 export const Cast = ({castId}) => {
     const [cast, setCast] = useState([]);
-    console.log("castId", castId)
+    // console.log("castId", castId)
     useEffect(() => {    
         api.fetchCast(castId).then(cast => {setCast(cast)}).catch(error => console.log(error));  
   }, [castId]);

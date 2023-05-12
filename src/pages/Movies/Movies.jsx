@@ -13,7 +13,7 @@ import { api } from 'services/api';
 export const Movies = ({importentId, getId}) => {
     const [searchMovie, setSearchMovie] = useState('');
     const [searchList, setSearchList] = useState([]);
-    console.log("in Mov", importentId)
+    // console.log("in Mov", importentId)
 
         useEffect(() => { 
            if (searchMovie === '') {

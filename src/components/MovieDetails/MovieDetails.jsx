@@ -12,7 +12,7 @@ import { Reviews } from "components/Reviews/Reviews";
 
 export const MovieDetails = ({forDetailsId}) => {
     const [details, setDetails] = useState({})
-    console.log("in Details", forDetailsId)
+    // console.log("in Details", forDetailsId)
     useEffect(() => {
         
         api.fetchDetails(forDetailsId).then(responce => { setDetails(responce) }).catch(error => console.log(error))

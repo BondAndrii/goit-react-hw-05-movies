@@ -25,6 +25,7 @@ export const SearchMovies = ({onSubmit}) => {
                 <input
                 value={searchMovie}
                 type='text'
+                placeholder="enter film`s name"
                 onChange={handleChange}
                 ></input>
                 <button type="submit">Submit</button>

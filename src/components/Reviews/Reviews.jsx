@@ -8,7 +8,7 @@ import "./Reviews.css"
 
 export const Reviews = ({forReviewsId}) => {
     const [reviews, setReviews] = useState([]); 
-    console.log("in reviews", forReviewsId)
+    // console.log("in reviews", forReviewsId)
     useEffect(() => {       
         api.fetchReviews(forReviewsId).then(data => {setReviews(data)}).catch(error => console.log(error));    
   }, [forReviewsId]);
