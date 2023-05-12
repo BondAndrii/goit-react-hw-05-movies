@@ -38,8 +38,8 @@ export const Movies = ({getId}) => {
     return (
         <div>            
             <SearchMovies onSubmit={findSearchMovie} />
-            {showList && <Maper data={searchList} onClick={toggleList} /> }           
-            {!showList && <Outlet />}
+            {showList ? <Maper data={searchList} onClick={toggleList} /> : <Outlet /> }           
+           
         </div>
     )
 }
