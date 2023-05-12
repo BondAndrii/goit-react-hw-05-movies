@@ -4,7 +4,7 @@ import { Maper } from "components/Maper/Maper";
 
 import { api } from 'services/api';
 
-export const Home = ({  getId }) => {
+export const Home = ({getId}) => {
     const [top, setTop] = useState([]);
     
     useEffect(() => {
