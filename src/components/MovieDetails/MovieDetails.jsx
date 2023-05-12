@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from "react";
-// import { Link, Outlet } from "react-router-dom"
+
+import { Link, Outlet } from "react-router-dom"
+
+// import { Link } from "react-router-dom";
+
 import "./MovieDetails.css"
 
 import { api } from 'services/api';
 
-import { Cast } from "components/Cast/Cast";
+// import { Cast } from "components/Cast/Cast";
 
-import { Reviews } from "components/Reviews/Reviews";
+// import { Reviews } from "components/Reviews/Reviews";
 
 
 
@@ -38,8 +42,12 @@ export const MovieDetails = ({forDetailsId}) => {
                         {/* {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)} */}
                     </p>
                 </div>
-                <Cast castId={forDetailsId} />
-                <Reviews forReviewsId={forDetailsId} />
+                <nav>
+                    <Link to={`/movies/${forDetailsId}/cast`}>Cast</Link>
+                    <Link to={`/movies/${forDetailsId}/reviews`}>Review</Link>
+                </nav>
+                <Outlet />
+               
             </div>           
                     
            
