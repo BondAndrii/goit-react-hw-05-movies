@@ -1,13 +1,27 @@
-.Layuot{
-   
-    height: 60px; 
-    font-size: 24px;
-    background-color: gray;
-    border: 1px solid red;
+.Container{    
+    padding-left: 40px;
+    padding-right: 40px;
 }
-.Layuot__element{
-    display: inline-block;
-    width: 120px;
-    margin-top: 0;
-    margin-left: 20px;
+
+.Header{
+    display: flex;
+    align-items: center;
+    height: 60px;
+    border-bottom: 1px solid #000;
+    
 }
+
+/* .Navigation{
+    display: flex;
+    align-items: center;
+} */
+
+.Link{
+    padding-right: 20px;
+    color:blue;
+    text-decoration: none;
+    &.active {
+            color: red;
+    };
+}
+
