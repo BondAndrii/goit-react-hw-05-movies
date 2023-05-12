@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react"
 
-// import { Link, Outlet } from "react-router-dom";
+import {Outlet } from "react-router-dom";
+
+
 
 import { SearchMovies } from "components/SearchMovies/SearchMovies";
 
-import { MovieDetails } from "components/MovieDetails/MovieDetails";
+
 
 import { Maper } from "components/Maper/Maper";
 
@@ -34,7 +36,7 @@ export const Movies = ({importentId, getId}) => {
             
             <SearchMovies onSubmit={findSearchMovie} />
             <Maper data={searchList} onClick={getId} />            
-            <MovieDetails forDetailsId={importentId} />          
+            <Outlet />
         </div>
     )
 }
