@@ -15,7 +15,7 @@ import { api } from 'services/api';
 export const Movies = ({getId}) => {
     const [searchMovie, setSearchMovie] = useState('');
     const [searchList, setSearchList] = useState([]);
-    const [showList, setShowList] = useState(true);
+    // const [showList, setShowList] = useState(true);
     // console.log("in Mov", importentId)
 
     useEffect(() => { 
@@ -24,21 +24,23 @@ export const Movies = ({getId}) => {
             //    alert('Please, enter films name')
                 } else {
                api.fetchMovie(searchMovie).then(responce => { setSearchList(responce); }).catch(error => console.log(error));
-               setShowList(true);
+            //    setShowList(true);
                 }    
         }, [searchMovie]); 
     const findSearchMovie = (word) => {
         setSearchMovie(word);        
     } 
-    const toggleList = (id) => {
-        setShowList(false);
-        getId(id)
-    }
+    // const toggleList = (id) => {
+    //     setShowList(false);
+    //     getId(id)
+    // }
 
     return (
         <div>            
             <SearchMovies onSubmit={findSearchMovie} />
-            {showList ? <Maper data={searchList} onClick={toggleList} /> : <Outlet /> }           
+            
+            <Maper data={searchList} onClick={getId} />
+            <Outlet />
            
         </div>
     )
