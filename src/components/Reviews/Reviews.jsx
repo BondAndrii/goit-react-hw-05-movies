@@ -4,7 +4,7 @@ import { ReviewsItem } from "components/ReviewsItem/ReviewsItem";
 
 import { api } from 'services/api';
 
-import "./Reviews.css"
+// import styles from "./Reviews.module.css"
 
 export const Reviews = ({forReviewsId}) => {
     const [reviews, setReviews] = useState([]); 
@@ -13,8 +13,8 @@ export const Reviews = ({forReviewsId}) => {
         api.fetchReviews(forReviewsId).then(data => {setReviews(data)}).catch(error => console.log(error));    
   }, [forReviewsId]);
     return (
-        <div className="Reviews">
-            <ReviewsItem reviews={reviews} />          
+        <div >
+            {reviews.length > 0 ? <ReviewsItem reviews={reviews} /> : (<h3>We don't have any reviews for this movie </h3>) }        
         </div>
     )
 }
