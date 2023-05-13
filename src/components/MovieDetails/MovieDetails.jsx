@@ -1,55 +1,53 @@
 import React, { useEffect, useState } from "react";
 
-import { Link, Outlet } from "react-router-dom"
-
-// import { Link } from "react-router-dom";
-
-import "./MovieDetails.css"
+import { Link, Outlet } from "react-router-dom";
 
 import { api } from 'services/api';
 
-// import { Cast } from "components/Cast/Cast";
+import styles from "./MovieDetails.module.css"
 
-// import { Reviews } from "components/Reviews/Reviews";
-
+import NoPoster from "../../assets/NoPoster.png"
 
 
 export const MovieDetails = ({forDetailsId}) => {
     const [details, setDetails] = useState({})
+    const imgUrl = 'https://image.tmdb.org/t/p/w400';
     // console.log("in Details", forDetailsId)
     useEffect(() => {
         
         api.fetchDetails(forDetailsId).then(responce => { setDetails(responce) }).catch(error => console.log(error))
     }
   , [forDetailsId]);
-
+    const { poster_path, title, vote_average, overview, genres, tagline } = details;
+    const score =Math.round( vote_average * 10);
     return (
         <div >
-            <p className="goBack">Go back go</p>
-            <div className="StandartInform">
+            <p className={styles.GoBack}>Go back</p>
+            <div className={styles.StandartInform}>
                 <img
-                    src={`https://image.tmdb.org./t/p/w300${details.poster_path}`}
-                    // src={details.poster_path}
-                    className="Banner"
-                    alt={details.tagline} />
-                <div className="Inform">
-                    <h1>{details.title }</h1>
-                    <p>User Score: {details.vote_average }</p>
+                    src={poster_path ? (imgUrl + poster_path): NoPoster}
+                    // src={NoPoster}
+                    className={styles.Banner}
+                    alt={tagline} /> 
+                <div className={styles.Inform}>
+                    <h1>{title }</h1>
+                    <p>User Score: {score }%</p>
                     <h2>Overview</h2>
-                    <p>{ details.overview}</p>
+                    <p>{ overview}</p>
                     <h2>Genres</h2>
-                    <p>
-                        {/* {details.genres.map(genr => <p key={genr.id}>{genr.name}</p>)} */}
-                    </p>
+                    <ul className={styles.Genres}>
+                        {genres?.map(genr => <p className={styles.GenresItem} key={genr.id}>{genr.name}</p>)}
+                    </ul>
                 </div>
-                <nav>
-                    <Link to={`/movies/${forDetailsId}/cast`}>Cast</Link>
-                    <Link to={`/movies/${forDetailsId}/reviews`}>Review</Link>
-                </nav>
-                <Outlet />
+                
                
             </div>           
-                    
+            <nav className={styles.Navigation} >
+                <h2>Additional information</h2>
+                <Link to={`/movies/${forDetailsId}/cast`}>Cast</Link>
+                <Link to={`/movies/${forDetailsId}/reviews`}>Review</Link>
+            </nav>
+                <Outlet />        
            
         </div>
     )

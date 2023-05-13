@@ -1,0 +1,38 @@
+.GoBack {
+    display: inline-block;
+    color:blue;
+    background-color: yellow;
+}
+.Banner{
+    width: 240px;
+    height: 320px;
+    background-color:grey;
+    border-radius: 15px;
+}
+.StandartInform {
+    display: flex;
+    /* justify-content: space-between; */
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+.Inform {
+    margin-left: 20px;
+    width: calc(100%  - 260px);
+    /* width: 480px; */
+}
+
+.Navigation{
+    display: flex;
+    flex-direction: column ;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #000;
+}
+.Genres{
+    display: flex;
+    
+}
+.GenresItem{
+    display: inline-block;
+    
+    margin-right: 10px;
+}

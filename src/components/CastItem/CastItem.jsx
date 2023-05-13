@@ -1,16 +1,27 @@
 import React from "react";
 
-export const CastItem = ({cast}) => {
+import SomePerson from "../../assets/SomePerson.png"
+
+import styles from "./CastItem.module.css"
+
+export const CastItem = ({ cast }) => {
+    const imgUrl = 'https://image.tmdb.org/t/p/w400';
     return (
-        <ul>
-             {cast.map(actor => <li key={actor.id}>
-                <img
-                    src={`https://image.tmdb.org./t/p/w300${actor.profile_path}`}
-                    // src={actor.profile_path}
-                    alt={actor.name} />
-                <p>{actor.name}</p>
-                <p>Character: {actor.character}</p>
-            </li>)}   
+        <ul className={styles.Gallery}>
+            {cast.map(actor => {
+                const { id, name, character, profile_path } = actor;
+                return (
+                    <li className={styles.Item} key={id}>
+                    <img
+                        className={styles.Portret}
+                        src={profile_path ? (imgUrl + profile_path): SomePerson}                        
+                        alt={name} />
+                    <p >{name}</p>
+                    <p>Character: {character}</p>
+                    </li>
+                )
+            }
+                )}   
         </ul>
     )
     

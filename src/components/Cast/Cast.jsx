@@ -4,7 +4,7 @@ import { CastItem } from "components/CastItem/CastItem";
 
 import { api } from 'services/api';
 
-import "./Cast.css"
+import styles from "./Cast.module.css"
 
 export const Cast = ({castId}) => {
     const [cast, setCast] = useState([]);
@@ -14,7 +14,7 @@ export const Cast = ({castId}) => {
   }, [castId]);
 
     return (
-        <div className="Cast">
+        <div className={styles.Cast}>
             <CastItem cast={cast } />                   
         </div>
     )
