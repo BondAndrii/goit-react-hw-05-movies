@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/544.49e4125f.chunk.css","mappings":"AAAA,oBACI,YAAa,CACb,qBAAsB,CACtB,eACJ,CAEA,wBACI,oBACJ","sources":["components/Maper/Maper.module.css"],"sourcesContent":[".Maper{\n    display: flex;\n    flex-direction: column;\n    list-style: none;\n}\n\n.MaperItem{\n    text-decoration: none;\n}"],"names":[],"sourceRoot":""}

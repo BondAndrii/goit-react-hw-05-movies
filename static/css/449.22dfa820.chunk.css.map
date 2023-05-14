@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/449.22dfa820.chunk.css","mappings":"AAAA,yBACI,eACJ,CAEA,yBAEI,YAAa,CADb,UAEJ,CAEA,sBACI,cACJ","sources":["components/CastItem/CastItem.module.css"],"sourcesContent":[".Gallery {\n    list-style: none;\n}\n\n.Portret {\n    width: 80px;\n    height: 120px;\n}\n\n.Item {\n    font-size: 16px;\n}"],"names":[],"sourceRoot":""}
