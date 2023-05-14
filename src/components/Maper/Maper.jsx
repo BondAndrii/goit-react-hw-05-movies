@@ -4,12 +4,12 @@ import { NavLink, useLocation } from "react-router-dom";
 
 import styles from "./Maper.module.css"
 
-export const Maper = ({ data, onClick }) => {
-    console.log("searchList in Maper", data)
+const Maper = ({ data, onClick }) => {
+    // console.log("searchList in Maper", data)
     
     const location = useLocation();
 
-   console.log("location in search", location)
+//    console.log("location in search", location)
 
     const getId = (event) => {
         const { id } = event.target;
@@ -18,9 +18,10 @@ export const Maper = ({ data, onClick }) => {
     return (
     <ul className={styles.Maper}>
             {data.map(item => {
-                 const { id, title, name } = item;
+                const { id, title, name } = item;
+                console.log("in item", item)
                 return (
-                     <NavLink
+                    <NavLink
                         className={styles.MaperItem}
                         to={`/movies/${id}`}
                         state={{from:location}}
@@ -35,3 +36,5 @@ export const Maper = ({ data, onClick }) => {
     )
      
 }
+
+export default Maper;

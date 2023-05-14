@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
-import { Maper } from "components/Maper/Maper";
+import Maper  from "components/Maper/Maper";
 
 import styles from "./SearchMovies.module.css"
 
-export const SearchMovies = ({onSubmit, list, getId}) => {
+const SearchMovies = ({onSubmit, list, getId}) => {
     
     const [searchMovie, setSearchMovie] = useState('');    
 
@@ -41,4 +41,6 @@ export const SearchMovies = ({onSubmit, list, getId}) => {
     </>     
     )
 }
+
+export default SearchMovies;
 

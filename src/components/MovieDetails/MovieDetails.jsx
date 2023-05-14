@@ -12,7 +12,7 @@ import styles from "./MovieDetails.module.css"
 import NoPoster from "../../assets/NoPoster.png"
 
 
-export const MovieDetails = ({forDetailsId}) => {
+const MovieDetails = ({forDetailsId}) => {
     const [details, setDetails] = useState({})
     const location = useLocation(); 
     const imgUrl = 'https://image.tmdb.org/t/p/w400';
@@ -20,7 +20,7 @@ export const MovieDetails = ({forDetailsId}) => {
     const backAdress = "/movies";
 
     const backLinkHref = location.state?.from ?? backAdress;
-    console.log("location in Details", location)
+    // console.log("location in Details", location)
     useEffect(() => {
         
         api.fetchDetails(forDetailsId).then(responce => { setDetails(responce) }).catch(error => console.log(error))
@@ -40,7 +40,7 @@ export const MovieDetails = ({forDetailsId}) => {
                     alt={tagline} /> 
                 <div className={styles.Inform}>
                     <h1>{title }</h1>
-                    <p>User Score: {score }%</p>
+                    <p>User Score: {vote_average? score : 0 }%</p>
                     <h2>Overview</h2>
                     <p>{ overview}</p>
                     <h2>Genres</h2>
@@ -62,3 +62,4 @@ export const MovieDetails = ({forDetailsId}) => {
     )
 }
 
+export default MovieDetails;

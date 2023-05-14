@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import { CastItem } from "components/CastItem/CastItem";
+import CastItem  from "components/CastItem/CastItem";
 
 import { api } from 'services/api';
 
 import styles from "./Cast.module.css"
 
-export const Cast = ({castId}) => {
+const Cast = ({castId}) => {
     const [cast, setCast] = useState([]);
     // console.log("castId", castId)
     useEffect(() => {    
@@ -20,3 +20,4 @@ export const Cast = ({castId}) => {
     )
 }
 
+export default Cast;

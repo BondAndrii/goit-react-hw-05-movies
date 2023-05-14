@@ -4,7 +4,7 @@ import SomePerson from "../../assets/SomePerson.png"
 
 import styles from "./CastItem.module.css"
 
-export const CastItem = ({ cast }) => {
+const CastItem = ({ cast }) => {
     const imgUrl = 'https://image.tmdb.org/t/p/w400';
     return (
         <ul className={styles.Gallery}>
@@ -26,3 +26,5 @@ export const CastItem = ({ cast }) => {
     )
     
 }
+
+export default CastItem;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Suspense} from "react";
 
 import { NavLink } from "react-router-dom";
 
@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom/dist";
 
 import styles from "./Layout.module.css"
 
-export const Layout = () => {
+const Layout = () => {
     return (
         <div className={styles.Container}> 
             <header className={styles.Header}>
@@ -14,10 +14,12 @@ export const Layout = () => {
                     <NavLink className={styles.Link} to="/">Home</NavLink>
                     <NavLink className={styles.Link} to="/movies">Movies</NavLink>
                 </nav>
-           </header>
-            <Outlet/>
+            </header>
+            <Suspense fallback={<div>Loading...</div>}>
+                <Outlet />
+            </Suspense>
         </div>
     )
 }
 
- 
+export default Layout;

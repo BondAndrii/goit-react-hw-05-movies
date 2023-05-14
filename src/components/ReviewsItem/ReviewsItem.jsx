@@ -2,7 +2,7 @@ import React from "react";
 
 import styles from "./ReviewsItem.module.css"
 
-export const ReviewsItem = ({reviews}) => {
+const ReviewsItem = ({reviews}) => {
     return (
         <ul className={styles.List}>
                 {reviews.map(author =>
@@ -13,3 +13,5 @@ export const ReviewsItem = ({reviews}) => {
         </ul>
     )
 }
+
+export default ReviewsItem;

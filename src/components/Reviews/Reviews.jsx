@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import { ReviewsItem } from "components/ReviewsItem/ReviewsItem";
+import  ReviewsItem  from "components/ReviewsItem/ReviewsItem";
 
 import { api } from 'services/api';
 
 // import styles from "./Reviews.module.css"
 
-export const Reviews = ({forReviewsId}) => {
+const Reviews = ({forReviewsId}) => {
     const [reviews, setReviews] = useState([]); 
     // console.log("in reviews", forReviewsId)
     useEffect(() => {       
@@ -19,3 +19,4 @@ export const Reviews = ({forReviewsId}) => {
     )
 }
 
+export default Reviews;

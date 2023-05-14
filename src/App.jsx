@@ -1,24 +1,46 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,  lazy } from 'react';
 
-import { Routes, Route, useSearchParams} from "react-router-dom";
+import { Routes, Route, useSearchParams } from "react-router-dom";
 
-import { Movies } from "./pages/Movies/Movies"
+// const Layout = lazy(() => import("./components/Layout/Layout"));
 
-import { Home } from 'pages/Home/Home';
+import Layout from "./components/Layout/Layout";
 
-import { MovieDetails } from 'components/MovieDetails/MovieDetails';
-
-import { Cast } from "components/Cast/Cast";
-
-import { Reviews } from "components/Reviews/Reviews";
-
-import { NotFound } from 'components/NotFound/NotFound';
-
-import { Layout } from "./components/Layout/Layout";
-
-import { SearchMovies } from 'components/SearchMovies/SearchMovies';
+// const api = lazy(() => import("./services/api"))
 
 import { api } from 'services/api';
+
+const Home = lazy(() => import("./pages/Home/Home"));
+
+// import { Home } from 'pages/Home/Home';
+
+const Movies = lazy(() => import("./pages/Movies/Movies"));
+
+// import { Movies } from "./pages/Movies/Movies"
+
+const SearchMovies = lazy(() => import("./components/SearchMovies/SearchMovies"));
+
+// import { SearchMovies } from 'components/SearchMovies/SearchMovies';
+
+const MovieDetails = lazy(() => import("./components/MovieDetails/MovieDetails"));
+
+// import { MovieDetails } from 'components/MovieDetails/MovieDetails';
+
+const Cast = lazy(() => import("./components/Cast/Cast"));
+
+// import { Cast } from "components/Cast/Cast";
+
+const Reviews = lazy(() => import("./components/Reviews/Reviews"));
+
+// import { Reviews } from "components/Reviews/Reviews";
+
+
+
+const NotFound = lazy(()=> import("./components/NotFound/NotFound"))
+
+// import { NotFound } from 'components/NotFound/NotFound';
+
+
 
 
 
@@ -58,10 +80,11 @@ export const App = () => {
           
                 }    
   }, [filmName]); 
-  return (        
+  return (
+    // <Suspense fallback={<div>Loading...</div>}>
       <Routes>
         <Route  path='/' element={<Layout/>}>
-        <Route index element={<Home list={top } getId={handleGetId}/>} />
+          <Route index element={<Home list={top } getId={handleGetId}/>} />
           <Route path='movies' element={<Movies />} >
             <Route index element={ <SearchMovies
                   // onSubmit={updateQueryString}
@@ -73,9 +96,11 @@ export const App = () => {
                 <Route path='cast' element={<Cast castId={id} />} />
                 <Route path='reviews' element={<Reviews forReviewsId={id} />} />                
             </Route>   
-        </Route>
+          </Route>
         <Route path="*" element={<NotFound/>} />
         </Route>          
       </Routes> 
+    // </Suspense>
   )
 };
+
