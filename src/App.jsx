@@ -24,22 +24,29 @@ import { api } from 'services/api';
 
 
 export const App = () => {
-
+   const [top, setTop] = useState([]);
   const [id, setId] = useState(''); 
   const [searchList, setSearchList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const filmName = searchParams.get("query") ?? "";
 
+  const filmName = searchParams.get("query") ?? ""; 
+  console.log("filmName first rander", filmName);  
+  useEffect(() => {
+    
+    api.fetchTop().then(list => {setTop(list)}).catch(error => console.log(error))    
+  }, []);
+
+ 
   const handleGetId = (id) => {
     setId(id);    
   }
   const updateQueryString = (query) => {
-        const nextParams = query !== "" ? { query } : {};
-    setSearchParams(nextParams);
+  const nextParams = query !== "" ? { query } : {};
+  setSearchParams(nextParams);
     
   }
   useEffect(() => { 
-        // if (searchMovie === '')
+    console.log("filmName else rander", filmName); 
         if (filmName === '')
         {
                return
@@ -52,18 +59,18 @@ export const App = () => {
   return (        
       <Routes>
         <Route  path='/' element={<Layout/>}>
-          <Route index element={<Home getId={handleGetId}/>} />
-          <Route path='movies' element={<Movies importentId={id} getId={handleGetId} />} >
-          <Route index element={ <SearchMovies
-                // onSubmit={updateQueryString}
-                onSubmit={updateQueryString}
-                forMaperList={searchList}
-                getId={handleGetId}
-            /> } />
-          <Route path="/movies/:movieId" element={<MovieDetails forDetailsId={id} />} >
-              <Route path='cast' element={<Cast castId={id} />} />
-              <Route path='reviews' element={<Reviews forReviewsId={id} />} />                
-          </Route>   
+        <Route index element={<Home forMaperList={top } getId={handleGetId}/>} />
+          <Route path='movies' element={<Movies />} >
+            <Route index element={ <SearchMovies
+                  // onSubmit={updateQueryString}
+                  onSubmit={updateQueryString}
+                  forMaperList={searchList}
+                  getId={handleGetId}
+              /> } />
+            <Route path=":movieId" element={<MovieDetails forDetailsId={id} />} >
+                <Route path='cast' element={<Cast castId={id} />} />
+                <Route path='reviews' element={<Reviews forReviewsId={id} />} />                
+            </Route>   
         </Route>
         <Route path="*" element={<NotFound/>} />
         </Route>          
