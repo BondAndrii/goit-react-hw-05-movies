@@ -1,3 +1,12 @@
-/* .Cast{
-    
-} */
+.Gallery {
+    list-style: none;
+}
+
+.Portret {
+    width: 80px;
+    height: 120px;
+}
+
+.Item {
+    font-size: 16px;
+}

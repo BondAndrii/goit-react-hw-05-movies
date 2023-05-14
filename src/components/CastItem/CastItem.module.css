@@ -1,10 +1,12 @@
-.Gallery{
+.Gallery {
     list-style: none;
 }
-.Portret{
+
+.Portret {
     width: 80px;
     height: 120px;
 }
-.Item{
+
+.Item {
     font-size: 16px;
 }

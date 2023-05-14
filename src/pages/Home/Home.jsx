@@ -6,13 +6,6 @@ import { useLocation } from "react-router-dom";
 
 import api from "services/api";
 
-// const Home = ({ list, getId }) => {
-//   return (
-//         <Maper data={list} onClick={getId} />
-//     )
-// }
-
-// export default Home;
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -24,8 +17,7 @@ const Home = () => {
         try {
           setIsLoading(true);
           setError(null);
-          const result = await api.fetchTrend()
-          // console.log("in result", result)
+          const result = await api.fetchTop();         
           setMovies(result)
         } catch (error) {
           console.error("error in fetchTrend", error.message);
