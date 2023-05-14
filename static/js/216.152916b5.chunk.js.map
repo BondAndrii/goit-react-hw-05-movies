@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/216.152916b5.chunk.js","mappings":"iKAOA,UALiB,WACb,OAAO,0KAEV,C","sources":["components/NotFound/NotFound.jsx"],"sourcesContent":["import React from \"react\";\n\nconst NotFound = () => {\n    return <h2>Фільму з такою назвою немає</h2>\n    \n}\n\nexport default NotFound;"],"names":[],"sourceRoot":""}
