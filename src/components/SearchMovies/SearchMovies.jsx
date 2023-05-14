@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import { Maper } from "components/Maper/Maper";
 
+import styles from "./SearchMovies.module.css"
+
 export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
     
     const [searchMovie, setSearchMovie] = useState('');
@@ -23,7 +25,7 @@ export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
 
     return (
     <>
-        <form onSubmit={handleSubmit}>
+        <form className={styles.Form} onSubmit={handleSubmit}>
             <label> 
                 <input
                 value={searchMovie}
@@ -33,7 +35,7 @@ export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
                 ></input>
                 <button type="submit">Submit</button>
             </label>
-            </form>
+        </form>
             <Maper data={forMaperList } onClick={getId} />
     </>     
     )
