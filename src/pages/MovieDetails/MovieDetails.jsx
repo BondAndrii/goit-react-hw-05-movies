@@ -20,9 +20,7 @@ const MovieDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movieData, setMovieData] = useState([]);
-    const { movieId } = useParams();
-    console.log(useParams())
-  console.log("in movieDetails", movieId);
+  const { movieId } = useParams();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
 
@@ -33,7 +31,6 @@ const MovieDetails = () => {
         setError(null);
 
         const data = await api.fetchDetails(movieId);
-        console.log(data);
         setMovieData(data);
       } catch (error) {
         console.log(error.message);

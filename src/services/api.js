@@ -5,7 +5,6 @@ const key = '278bf75944205bdb0a6474cdc0be106c';
 async function fetchTop() {
     try {
         const {data} = await axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}`)
-        // console.log(data.results);
         return data.results
     } catch (error) {
         throw new Error('Oops, we don`t have any movies');
@@ -15,7 +14,6 @@ async function fetchTop() {
 async function fetchMovie(filmName) {
     try {
         const {data} = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${filmName}&language=en-US&page=1&per_page=12&include_adult=false`)
-        // console.log(data.results);
         return data;
     } catch (error) {
         throw new Error('Oops, we don`t have any movies');
@@ -24,9 +22,7 @@ async function fetchMovie(filmName) {
 
 async function fetchDetails(id) {
     try {
-        const {data} = await axios.get(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`);
-        console.log("fetchDetails", data);
+        const {data} = await axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`);
         return data;
     } catch (error) {
         throw new Error('Oops, we don`t have any movies');
@@ -34,10 +30,7 @@ async function fetchDetails(id) {
 }
 async function fetchCast (movieId) {
   try {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}`
-    );
-    // console.log(data.cast);
+    const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${key}`);
     return data.cast;
   } catch (error) {
     throw new Error('Oops, there is no cast movie');
@@ -46,10 +39,7 @@ async function fetchCast (movieId) {
 
 async function  fetchReviews(movieId) {
   try {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${key}`
-    );
-    // console.log(data.results);
+    const { data } = await axios.get(`https://api.themoviedb.org/3/movie/${movieId}/reviews?api_key=${key}`);
     return data.results;
   } catch (error) {
     throw new Error('Oops, we don`t have any reviews');
