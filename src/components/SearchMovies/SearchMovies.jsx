@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
-export const SearchMovies = ({onSubmit}) => {
+import { Maper } from "components/Maper/Maper";
+
+export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
     
     const [searchMovie, setSearchMovie] = useState('');
 
     const handleChange = (event) => {
         const { value } = event.target;
         setSearchMovie(value);
+        // onChange(value);
         
     }
     const handleSubmit = (event) => {        
@@ -19,7 +22,7 @@ export const SearchMovies = ({onSubmit}) => {
     }
 
     return (
-    
+    <>
         <form onSubmit={handleSubmit}>
             <label> 
                 <input
@@ -30,7 +33,9 @@ export const SearchMovies = ({onSubmit}) => {
                 ></input>
                 <button type="submit">Submit</button>
             </label>
-        </form>     
+            </form>
+            <Maper data={forMaperList } onClick={getId} />
+    </>     
     )
 }
 
