@@ -15,7 +15,7 @@ export const Cast = ({castId}) => {
 
     return (
         <div className={styles.Cast}>
-            <CastItem cast={cast } />                   
+            {cast.length > 0 ? <CastItem cast={cast } /> : (<h3>We don't have any casts for this movie </h3>)}                 
         </div>
     )
 }

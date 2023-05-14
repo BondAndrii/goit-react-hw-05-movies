@@ -24,29 +24,31 @@ import { api } from 'services/api';
 
 
 export const App = () => {
-   const [top, setTop] = useState([]);
+  const [top, setTop] = useState([]);
   const [id, setId] = useState(''); 
   const [searchList, setSearchList] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const filmName = searchParams.get("query") ?? ""; 
-  console.log("filmName first rander", filmName);  
-  useEffect(() => {
-    
+  // console.log("filmName first rander", filmName);
+  // console.log("searchList in App", searchList)
+  useEffect(() => {    
     api.fetchTop().then(list => {setTop(list)}).catch(error => console.log(error))    
   }, []);
 
  
   const handleGetId = (id) => {
-    setId(id);    
+    setId(id); 
+    
   }
+  
   const updateQueryString = (query) => {
   const nextParams = query !== "" ? { query } : {};
   setSearchParams(nextParams);
     
   }
   useEffect(() => { 
-    console.log("filmName else rander", filmName); 
+    // console.log("filmName else rander", filmName); 
         if (filmName === '')
         {
                return
@@ -59,12 +61,12 @@ export const App = () => {
   return (        
       <Routes>
         <Route  path='/' element={<Layout/>}>
-        <Route index element={<Home forMaperList={top } getId={handleGetId}/>} />
+        <Route index element={<Home list={top } getId={handleGetId}/>} />
           <Route path='movies' element={<Movies />} >
             <Route index element={ <SearchMovies
                   // onSubmit={updateQueryString}
                   onSubmit={updateQueryString}
-                  forMaperList={searchList}
+                  list={searchList}
                   getId={handleGetId}
               /> } />
             <Route path=":movieId" element={<MovieDetails forDetailsId={id} />} >

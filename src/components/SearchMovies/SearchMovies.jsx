@@ -4,9 +4,9 @@ import { Maper } from "components/Maper/Maper";
 
 import styles from "./SearchMovies.module.css"
 
-export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
+export const SearchMovies = ({onSubmit, list, getId}) => {
     
-    const [searchMovie, setSearchMovie] = useState('');
+    const [searchMovie, setSearchMovie] = useState('');    
 
     const handleChange = (event) => {
         const { value } = event.target;
@@ -19,6 +19,7 @@ export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
         onSubmit(searchMovie)        
         reset()
     }
+
     const reset = () => {
         setSearchMovie('')
     }
@@ -35,8 +36,8 @@ export const SearchMovies = ({onSubmit, forMaperList, getId}) => {
                 ></input>
                 <button type="submit">Submit</button>
             </label>
-        </form>
-            <Maper data={forMaperList } onClick={getId} />
+            </form>
+            <Maper data={list} onClick={getId} />            
     </>     
     )
 }

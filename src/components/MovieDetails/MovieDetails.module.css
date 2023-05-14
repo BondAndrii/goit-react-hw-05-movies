@@ -1,7 +1,10 @@
 .GoBack {
     display: inline-block;
+    margin: 5px;
+    padding: 5px;
     color:blue;
-    background-color: yellow;
+    text-decoration: none;
+    border: 1px solid #000;
 }
 .Banner{
     width: 240px;

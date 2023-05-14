@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 
-import { Link, Outlet } from "react-router-dom";
+import {
+    Link, Outlet,
+    useLocation
+} from "react-router-dom";
 
 import { api } from 'services/api';
 
@@ -11,8 +14,13 @@ import NoPoster from "../../assets/NoPoster.png"
 
 export const MovieDetails = ({forDetailsId}) => {
     const [details, setDetails] = useState({})
+    const location = useLocation(); 
     const imgUrl = 'https://image.tmdb.org/t/p/w400';
-    // console.log("in Details", forDetailsId)
+    
+    const backAdress = "/movies";
+
+    const backLinkHref = location.state?.from ?? backAdress;
+    console.log("location in Details", location)
     useEffect(() => {
         
         api.fetchDetails(forDetailsId).then(responce => { setDetails(responce) }).catch(error => console.log(error))
@@ -22,7 +30,8 @@ export const MovieDetails = ({forDetailsId}) => {
     const score =Math.round( vote_average * 10);
     return (
         <div >
-            <p className={styles.GoBack}>Go back</p>
+            <Link className={styles.GoBack} to={backLinkHref}> Go Back </Link>
+            {/* <p className={styles.GoBack}>Go back</p> */}
             <div className={styles.StandartInform}>
                 <img
                     src={poster_path ? (imgUrl + poster_path): NoPoster}
