@@ -1,32 +1,63 @@
-import React, { useState } from "react";
+import React
+// { useState }
+    from "react";
 
-import Maper  from "components/Maper/Maper";
+import { Field, Form, Formik } from 'formik';
 
-import styles from "./SearchMovies.module.css"
+// import Maper  from "components/Maper/Maper";
 
-const SearchMovies = ({onSubmit, list, getId}) => {
+// import styles from "./SearchMovies.module.css"
+
+
+
+// const SearchMovies = ({onSubmit, list, getId}) => {
     
-    const [searchMovie, setSearchMovie] = useState('');    
+    // const [searchMovie, setSearchMovie] = useState('');    
 
-    const handleChange = (event) => {
-        const { value } = event.target;
-        setSearchMovie(value);
-        // onChange(value);
+    // const handleChange = (event) => {
+    //     const { value } = event.target;
+    //     setSearchMovie(value);
+    //     // onChange(value);
         
-    }
-    const handleSubmit = (event) => {        
-        event.preventDefault();
-        onSubmit(searchMovie)        
-        reset()
-    }
+    // }
+    // const handleSubmit = (event) => {        
+    //     event.preventDefault();
+    //     onSubmit(searchMovie)        
+    //     reset()
+    // }
 
-    const reset = () => {
-        setSearchMovie('')
-    }
+    // const reset = () => {
+    //     setSearchMovie('')
+    // }
+const SearchMovies = ({onSubmit}) => {
+     return (
+        <>
+            <Formik
+                initialValues={{ query: ' ' }}
+                onSubmit={(values, { resetForm }) => {
+                onSubmit(values.query.trim());
+                resetForm();
+                }}
+            >
+                <Form>
+                <Field
+                    as="input"
+                    autoComplete="off"
+                    placeholder="Search movie..."
+                    name="query"
+                    autoFocus
+                />
+                <button type="submit">Search</button>
+                </Form>
+             </Formik> 
+         </>
+     )
+}
+   
+      
 
-    return (
-    <>
-        <form className={styles.Form} onSubmit={handleSubmit}>
+export default SearchMovies;
+  /* <form className={styles.Form} onSubmit={handleSubmit}>
             <label> 
                 <input
                 value={searchMovie}
@@ -37,10 +68,7 @@ const SearchMovies = ({onSubmit, list, getId}) => {
                 <button type="submit">Submit</button>
             </label>
             </form>
-            <Maper data={list} onClick={getId} />            
-    </>     
-    )
-}
-
-export default SearchMovies;
-
+            <Maper data={list} onClick={getId} />             */
+    // </>     
+    // )
+// }

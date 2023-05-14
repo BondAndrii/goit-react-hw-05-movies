@@ -15,9 +15,11 @@ const Layout = () => {
                     <NavLink className={styles.Link} to="/movies">Movies</NavLink>
                 </nav>
             </header>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Outlet />
-            </Suspense>
+            <main>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Outlet />
+                </Suspense>
+            </main>
         </div>
     )
 }

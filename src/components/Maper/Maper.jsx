@@ -1,34 +1,39 @@
 import React from "react";
 
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import styles from "./Maper.module.css"
 
-const Maper = ({ data, onClick }) => {
+const Maper = ({ data,
+// getId
+}) => {
     // console.log("searchList in Maper", data)
     
     const location = useLocation();
 
 //    console.log("location in search", location)
 
-    const getId = (event) => {
-        const { id } = event.target;
-        onClick(id);      
-    }
+    // const getId = (event) => {
+    //     const { id } = event.target;
+    //     onClick(id);      
+    // }
     return (
     <ul className={styles.Maper}>
             {data.map(item => {
                 const { id, title, name } = item;
-                console.log("in item", item)
+                // console.log("in item", item)
                 return (
-                    <NavLink
-                        className={styles.MaperItem}
-                        to={`/movies/${id}`}
-                        state={{from:location}}
-                        key={id}
-                        id={id}
-                        onClick={getId}>{title || name}
-                    </NavLink>
+                    <li key={id}>
+                        <Link
+                            className={styles.MaperItem}
+                            to={`/movies/${id}`}
+                            state={{ from: location }}                        
+                            // id={id}
+                            // onClick={getId}
+                        >{title || name}
+                            
+                        </Link>
+                    </li>
                 )
                
             })}
