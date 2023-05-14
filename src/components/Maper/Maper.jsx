@@ -2,9 +2,11 @@ import React from "react";
 
 import { Link, useLocation } from "react-router-dom";
 
+import PropTypes from "prop-types";
+
 import styles from "./Maper.module.css"
 
-const Maper = ({ data}) => {
+const Maper = ({data}) => {
     
     
     const location = useLocation();
@@ -32,3 +34,7 @@ const Maper = ({ data}) => {
 }
 
 export default Maper;
+
+Maper.propTypes = {
+    data: PropTypes.array.isRequired,
+}

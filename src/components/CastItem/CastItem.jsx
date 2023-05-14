@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import SomePerson from "assets/SomePerson.png";
 
 import styles from "./CastItem.module.css"
@@ -29,3 +31,7 @@ const CastItem = ({ cast }) => {
 }
 
 export default CastItem;
+
+CastItem.propTypes = {
+    cast: PropTypes.array.isRequired,
+}

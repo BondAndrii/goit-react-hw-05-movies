@@ -1,5 +1,7 @@
 import React from "react";
 
+import PropTypes from "prop-types";
+
 import { Field, Form, Formik } from 'formik';
 
 import styles from "./SearchMovies.module.css"
@@ -27,9 +29,11 @@ const SearchMovies = ({onSubmit}) => {
              </Formik> 
          </>
      )
-}
-   
+}   
       
 
 export default SearchMovies;
  
+SearchMovies.propTypes = {
+    onSubmit: PropTypes.func.isRequired
+}
