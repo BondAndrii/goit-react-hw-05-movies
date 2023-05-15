@@ -35,5 +35,5 @@ const SearchMovies = ({onSubmit}) => {
 export default SearchMovies;
  
 SearchMovies.propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
 }
