@@ -2,15 +2,12 @@ import React, { useState, useEffect } from "react";
 
 import Maper from "components/Maper/Maper";
 
-import { useLocation } from "react-router-dom";
-
 import api from "services/api";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
-  const location = useLocation();
 
   useEffect(() => {
     (async () => {
@@ -30,7 +27,7 @@ const Home = () => {
     <>
       {isLoading && <div>Loading...</div>}
       {error && !isLoading && <div>Try again</div>}
-      {!error && !isLoading && movies.length > 0 &&  <Maper data={movies} state={{from: location}} />  }
+      {!error && !isLoading && movies.length > 0 &&  <Maper data={movies} />  }
     </>
   )
 }

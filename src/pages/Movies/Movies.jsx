@@ -2,7 +2,7 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 
-import { useLocation, useSearchParams} from "react-router-dom";
+import {useSearchParams} from "react-router-dom";
 
 import SearchMovies from "components/SearchMovies/SearchMovies";
 
@@ -16,7 +16,6 @@ const MoviesPage = () => {
   const [films, setFilms] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const location = useLocation();
 
   useEffect(() => {
     (async () => {
@@ -40,7 +39,7 @@ const MoviesPage = () => {
         setIsLoading(false);
       }
     })();
-  }, [query, location.search]);
+  }, [query]);
 
   const updateQueryString = value => {
     if (value === '') {
@@ -56,7 +55,7 @@ const MoviesPage = () => {
       <SearchMovies onSubmit={updateQueryString} />
       {isLoading && <div>Loading...</div>}
       {error && !isLoading && (<h2 style={{ textAlign: 'center' }}>Try again.</h2>)}
-      {!error && !isLoading && films.length > 0 && (<Maper data={films} state={{ from: location }} />)}
+      {!error && !isLoading && films.length > 0 && (<Maper data={films} />)}
     </>
   );
 };
