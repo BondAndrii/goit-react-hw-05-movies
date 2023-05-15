@@ -34,9 +34,8 @@ const Cast = () => {
     <>
       {isLoading && <div>Loading...</div>}
       {error && !isLoading && <div>Try again</div>}
-      {!error && !isLoading && cast.length > 0 ? (<CastItem cast={cast} />) : (
-        <h2>We don't have any cast for this movie</h2>
-      )}
+      {!error && !isLoading && cast.length > 0 && (<CastItem cast={cast} />)}
+      {!error && !isLoading && cast.length === 0 && (<h2>We don't have any cast for this movie</h2>)}     
     </>
   );
 };
