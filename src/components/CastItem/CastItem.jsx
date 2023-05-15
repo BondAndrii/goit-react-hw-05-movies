@@ -11,7 +11,7 @@ const CastItem = ({ cast }) => {
     return (
         <ul className={styles.Gallery}>
             {cast.map(actor => {
-                // console.log(actor);
+                
                 return(
                 <li className={styles.Item} key={actor.id}>
                     <img
