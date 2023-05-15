@@ -11,6 +11,7 @@ const Cast = () => {
   const [error, setError] = useState(null);
   const [cast, setCast] = useState([]);
   const { movieId } = useParams();
+  const errorMessage = "Ууупс! Відбувся отріцатєльний поіск. Спробуйте ще раз";
   
 
   useEffect(() => {
@@ -23,7 +24,7 @@ const Cast = () => {
         
         setCast(data);
       } catch (error) {
-        console.log(error.message);
+        setError(true)
       } finally {
         setIsLoading(false);
       }
@@ -33,7 +34,7 @@ const Cast = () => {
   return (
     <>
       {isLoading && <div>Loading...</div>}
-      {error && !isLoading && <div>Try again</div>}
+      {error && !isLoading && <div>{errorMessage}</div>}
       {!error && !isLoading && cast.length > 0 && (<CastItem cast={cast} />)}
       {!error && !isLoading && cast.length === 0 && (<h2>We don't have any cast for this movie</h2>)}     
     </>

@@ -8,6 +8,7 @@ const Home = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [movies, setMovies] = useState([]);
+  const errorMessage = "Ууупс! Відбувся отріцатєльний поіск. Спробуйте ще раз";
 
   useEffect(() => {
     (async () => {
@@ -17,7 +18,8 @@ const Home = () => {
           const result = await api.fetchTop();         
           setMovies(result)
         } catch (error) {
-          console.error("error in fetchTrend", error.message);
+          setError(true)
+          // console.error("error in fetchTrend", error.message);
         }finally{setIsLoading(false);}
     })();
   }, [])
@@ -26,7 +28,7 @@ const Home = () => {
   return (
     <>
       {isLoading && <div>Loading...</div>}
-      {error && !isLoading && <div>Try again</div>}
+      {error && !isLoading && <div>{errorMessage}</div>}
       {!error && !isLoading && movies.length > 0 &&  <Maper data={movies} />  }
     </>
   )

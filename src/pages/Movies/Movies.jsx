@@ -16,6 +16,7 @@ const MoviesPage = () => {
   const [films, setFilms] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
+  const message = "Вибачте! Відбувся отріцатєльний пошук. Спробуйте знову";
 
   useEffect(() => {
     (async () => {
@@ -27,14 +28,16 @@ const MoviesPage = () => {
         const data = await api.fetchMovie(query);
         
         if (data.total_results === 0) {
-          alert(
-            `Sorry, there are no images matching your search query '${query}'. Please try again.`
-          );
-          return '';
+          // alert(
+          //   `Sorry, there are no images matching your search query '${query}'. Please try again.`
+          // );
+          return;
         }
         setFilms(data.results);
       } catch (error) {
-        console.log(error.message);
+        
+        setError(true)
+        // console.log(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -54,7 +57,7 @@ const MoviesPage = () => {
     <>      
       <SearchMovies onSubmit={updateQueryString} />
       {isLoading && <div>Loading...</div>}
-      {error && !isLoading && (<h2 style={{ textAlign: 'center' }}>Try again.</h2>)}
+      {error && !isLoading && (<h2 style={{ textAlign: 'center' }}>{message}</h2>)}
       {!error && !isLoading && films.length > 0 && (<Maper data={films} />)}
     </>
   );

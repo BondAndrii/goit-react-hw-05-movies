@@ -23,6 +23,7 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const location = useLocation();
   const backLinkLocationRef = useRef(location.state?.from ?? '/');
+  const errorMessage = "Сорян, проізошол отріцательний поіск. Спробуйте ще раз";
 
   useEffect(() => {
     (async () => {
@@ -33,7 +34,7 @@ const MovieDetails = () => {
         const data = await api.fetchDetails(movieId);
         setMovieData(data);
       } catch (error) {
-        console.log(error.message);
+        setError(true)
       } finally {
         setIsLoading(false);
       }
@@ -48,7 +49,7 @@ const Genres = movieData?.genres?.map(genre => genre.name).join(', ');
     <>
        {isLoading && <div>Loading...</div>}
       {error && !isLoading && (
-        <h2 style={{ textAlign: 'center' }}>Try again.</h2>)}
+        <h2 style={{ textAlign: 'center' }}>{errorMessage}</h2>)}
       {!error && !isLoading && movieData && (
         <div>
           <Link className={styles.GoBack} to={backLinkLocationRef.current}  > Go Back </Link>

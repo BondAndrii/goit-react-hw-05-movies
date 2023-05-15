@@ -11,6 +11,7 @@ const Reviews = () => {
   const [error, setError] = useState(null);
   const [reviews, setReviews] = useState([]);
   const { movieId } = useParams();
+  const message = "Вибачте! Відбувся отріцатєльний пошук. Спробуйте знову";
 
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Reviews = () => {
         const data = await api.fetchReviews(movieId);
         setReviews(data);
       } catch (error) {
-        console.log(error.message);
+        setError(true)
       } finally {
         setIsLoading(false);
       }
@@ -32,7 +33,7 @@ const Reviews = () => {
   return (
     <>
         {isLoading && <div>Loading...</div>}
-        {error && !isLoading && <div>Try again</div>}
+        {error && !isLoading && <div>{message }</div>}
         {!error && !isLoading && reviews.length > 0 && (<ReviewsItem reviews={reviews} />)}
         {!error && !isLoading && reviews.length === 0 && (<h2>We don't have any reviews for this movie</h2>)}
       
