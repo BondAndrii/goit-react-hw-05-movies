@@ -18,6 +18,8 @@ const Reviews = lazy(() => import("./components/Reviews/Reviews"));
 
 const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
+
+
 export const App = () => {
   return (
     <Suspense fallback={<Circles height="80" width="80" radius="9" color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />}>
