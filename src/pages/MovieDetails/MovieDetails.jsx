@@ -13,6 +13,7 @@ import styles from "./MovieDetails.module.css"
 import NoPoster from "../../assets/NoPoster.png"
 
 import { Suspense } from "react";
+import { Circles } from "react-loader-spinner";
 
 
 
@@ -47,7 +48,7 @@ const Genres = movieData?.genres?.map(genre => genre.name).join(', ');
 
   return (
     <>
-       {isLoading && <div>Loading...</div>}
+       {isLoading && <Circles height="80" width="80" radius="9" color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />}
       {error && !isLoading && (
         <h2 style={{ textAlign: 'center' }}>{errorMessage}</h2>)}
       {!error && !isLoading && movieData && (
@@ -86,11 +87,11 @@ const Genres = movieData?.genres?.map(genre => genre.name).join(', ');
         
         <nav className={styles.Navigation}>       
             <h2>Additional information</h2>
-              <Link to="cast" state={{ from: location }}>Cast</Link>         
-              <Link to="reviews" state={{ from: location }}>Reviews</Link>           
+              <Link to="cast" >Cast</Link>         
+              <Link to="reviews" >Reviews</Link>           
         </nav>
       </>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Circles height="80" width="80" radius="9" color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />}>
         <Outlet />
       </Suspense>
     </>

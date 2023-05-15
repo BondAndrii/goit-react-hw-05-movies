@@ -1,6 +1,8 @@
 import {lazy, Suspense} from 'react';
 
-import {Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+
+import { Circles } from  'react-loader-spinner'
 
 import Layout from "./components/Layout/Layout";
 
@@ -18,7 +20,7 @@ const NotFound = lazy(() => import("./components/NotFound/NotFound"));
 
 export const App = () => {
   return (
-    <Suspense fallback={<p>...Load page</p>}>
+    <Suspense fallback={<Circles height="80" width="80" radius="9" color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
