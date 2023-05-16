@@ -9,7 +9,9 @@ import SearchMovies from "components/SearchMovies/SearchMovies";
 import Maper from "components/Maper/Maper";
 
 import api from "services/api";
-import { Circles } from "react-loader-spinner";
+
+import Loader from 'components/Loader/Loader';
+
 
 const MoviesPage = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -57,7 +59,7 @@ const MoviesPage = () => {
   return (
     <>      
       <SearchMovies onSubmit={updateQueryString} />
-      {isLoading && <Circles height="80" width="80" radius="9" color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />}
+      {isLoading && <Loader/>}
       {error && !isLoading && (<h2 style={{ textAlign: 'center' }}>{message}</h2>)}
       {!error && !isLoading && films.length > 0 && (<Maper data={films} />)}
     </>

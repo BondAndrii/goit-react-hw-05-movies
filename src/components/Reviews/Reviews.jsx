@@ -5,7 +5,8 @@ import  ReviewsItem  from "components/ReviewsItem/ReviewsItem";
 import api from 'services/api';
 
 import { useParams } from "react-router-dom";
-import { Circles } from "react-loader-spinner";
+
+import Loader from 'components/Loader/Loader';
 
 const Reviews = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +34,7 @@ const Reviews = () => {
 
   return (
     <>
-        {isLoading && <Circles height="80" width="80" radius="9" color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />}
+        {isLoading && <Loader />}
         {error && !isLoading && <div>{message }</div>}
         {!error && !isLoading && reviews.length > 0 && (<ReviewsItem reviews={reviews} />)}
         {!error && !isLoading && reviews.length === 0 && (<h2>We don't have any reviews for this movie</h2>)}

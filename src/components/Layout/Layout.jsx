@@ -5,7 +5,8 @@ import { NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom/dist";
 
 import styles from "./Layout.module.css"
-import { Circles } from "react-loader-spinner";
+
+import Loader from 'components/Loader/Loader';
 
 const Layout = () => {
     return (
@@ -17,7 +18,7 @@ const Layout = () => {
                 </nav>
             </header>
             <main>
-                <Suspense fallback={<Circles height="80" width="80" radius="9" color = 'green' ariaLabel = 'three-dots-loading' wrapperStyle wrapperClass/>}>
+                <Suspense fallback={<Loader/>}>
                     <Outlet />
                 </Suspense>
             </main>
