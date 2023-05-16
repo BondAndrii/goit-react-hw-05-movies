@@ -16,8 +16,7 @@ const CastItem = ({ cast }) => {
                 <li className={styles.Item} key={actor.id}>
                     <img
                         className={styles.Portret}
-                        src={
-                        actor?.profile_path
+                        src={actor?.profile_path
                             ? `https://image.tmdb.org/t/p/original${actor?.profile_path}`
                             : SomePerson}
                         alt={actor.name || actor.original_name}

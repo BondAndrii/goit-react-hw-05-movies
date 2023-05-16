@@ -2,11 +2,7 @@ import {lazy, Suspense} from 'react';
 
 import { Routes, Route } from "react-router-dom";
 
-// import { Circles } from 'react-loader-spinner';
-
 import Loader from 'components/Loader/Loader';
-
-// import styles from "./App.module.css"
 
 import Layout from "./components/Layout/Layout";
 

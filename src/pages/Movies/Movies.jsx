@@ -25,22 +25,18 @@ const MoviesPage = () => {
     (async () => {
       try {
         if (query === '') return;
+
         setIsLoading(true);
         setError(null);
-
         const data = await api.fetchMovie(query);
         
         if (data.total_results === 0) {
-          // alert(
-          //   `Sorry, there are no images matching your search query '${query}'. Please try again.`
-          // );
           return;
         }
         setFilms(data.results);
       } catch (error) {
         
         setError(true)
-        // console.log(error.message);
       } finally {
         setIsLoading(false);
       }
@@ -49,7 +45,6 @@ const MoviesPage = () => {
 
   const updateQueryString = value => {
     if (value === '') {
-      setSearchParams({});
       return;
     }
     setSearchParams({ query: value });
